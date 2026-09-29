@@ -1,0 +1,6 @@
+09/29/26 
+Confirmed docker comes working through windows after changing the setting for WSL. 
+Dont need to download postgresql since we will use the image through docker. 
+
+To-do:
+Get the postgresql container running 
