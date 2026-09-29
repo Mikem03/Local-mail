@@ -4,11 +4,8 @@
 
 Build a privacy-first email intelligence pipeline. Gmail ingestion and workflow execution run on a Raspberry Pi 5 with 8 GB RAM. A separate Ubuntu/WSL machine runs local AI inference through Ollama.
 
-Project root on the user's Windows machine:
+Project root on the user's Windows machine
 
-```text
-C:\Users\17148\Documents\Projects\Local-mail
-```
 
 The planned directories exist, but implementation files have not yet been created.
 
