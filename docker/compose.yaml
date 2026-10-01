@@ -1,0 +1,22 @@
+services:
+    postgres:
+        image: postgres:17-alpine
+        container_name: local_mail_postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+        ports:
+            - "5432:5432"
+        volumes:
+            #Isolated directory for Postgres data only
+            - ../database/postgres:/var/lib/postgresql/data
+            # Mount custom low-memory configuation
+            - ./postgresql.conf:/etc/postgresql/postgresql.conf:ro
+        command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+            interval: 5s
+            timeout: 3s
+            retries: 5

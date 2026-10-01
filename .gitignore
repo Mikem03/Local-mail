@@ -1,0 +1,14 @@
+database/postgres/
+database/*.db
+config/credentials.json
+config/token.json
+.env
+*.exe
+*.out
+bin/
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.venv/
+env/
