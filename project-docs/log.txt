@@ -2,5 +2,9 @@
 Confirmed docker comes working through windows after changing the setting for WSL. 
 Dont need to download postgresql since we will use the image through docker. 
 
+09/30/26
+Ran the container and got a schema for email ingestions and job postings
+
 To-do:
-Get the postgresql container running 
+Setup the auth for google
+Coding implementation
