@@ -8,9 +8,16 @@ CREATE TABLE IF NOT EXISTS emails (
 	status VARCHAR(50) NOT NULL DEFAULT 'pending', --pending, processing, processed
 	claimed_at TIMESTAMPTZ,
 	lease_expires_at TIMESTAMPTZ,
+	attempt_count INTEGER NOT NULL DEFAULT 0,
+	last_error TEXT,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
 	updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Also upgrade databases where this migration was applied manually before
+-- application-managed migrations were introduced.
+ALTER TABLE emails ADD COLUMN IF NOT EXISTS attempt_count INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE emails ADD COLUMN IF NOT EXISTS last_error TEXT;
 
 CREATE INDEX IF NOT EXISTS idx_emails_status_lease ON emails(status, lease_expires_at);
 
