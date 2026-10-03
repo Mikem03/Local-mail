@@ -5,6 +5,11 @@ Dont need to download postgresql since we will use the image through docker.
 09/30/26
 Ran the container and got a schema for email ingestions and job postings
 
+10/2 
+- Added the Go module, pinned the PostgreSQL driver, and provided a safe `.env.example` template.
+- Added config loading for `POSTGRES_*` environment variables.
+- Added PostgreSQL operations to insert emails without duplicates, claim them with leases, record processing failures, and save extraction results atomically.
+- Updated the SQL migration to add attempt counts and error details, and added a command to track and apply migrations.
+
 To-do:
-Setup the auth for google
-Coding implementation
+Testing plans (unit + integration)
